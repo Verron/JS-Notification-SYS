@@ -126,14 +126,14 @@
 		});
 		note.css('top',( $(window).height()/2 ) - ( note.height()/2 ) );
 		note.css('left',( $(window).width()/2 ) - ( note.width()/2 ) );
-        var noteTitle = noteBorder.children('div#appNoteTitle');
+        var noteTitle = noteBorder.children('div#appNoteTitle'), noteFooter = noteBorder.children('div#appNoteFooter');
         
-        // Calculate appNoteContent Height
-        var np = parseInt(note.css('padding'),10), nh = note.height()-12, nth = noteTitle.height()+1; // -2 for noteBorder borders, +1 for noteTitle bottom border
+        // Calculate appNoteBorder Height
+        var np = parseInt(note.css('padding'),10), nh = note.height()-12, nth = noteTitle.height()+1, nfh = noteFooter.height()+1; // -2 for noteBorder borders, +1 for noteTitle bottom border
         np = String(np) == "NaN" ? 20 : np; // iPad doesn't support css padding, position or offset
-        var nch = nh-(np+nth);
+        var nch = nh-(np+nth+nfh);
         
-        // Calculate appNoteContent Width
+        // Calculate appNoteBorder Width
         var nw = note.width()-2;
         var ncw = nw-np;
 		noteBorder.css({

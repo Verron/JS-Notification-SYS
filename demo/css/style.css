@@ -1,0 +1,151 @@
+/* Turn off outlining */
+ *:focus { outline: none; }
+/* Turn off annoying mobile highlight */
+* {
+    outline: none;
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+    -webkit-touch-callout: none;
+
+}
+
+/* Notification */
+div#appNote {
+    display: none;
+	position: fixed;
+	top: 90px;
+	left: 110px;
+	padding: 20px;
+	width: 540px;
+	height: 240px;
+	z-index: 1100;
+	background: rgba(193,91,0,0.5);
+	border-radius: 8px 8px 8px 8px;
+}
+div#appNoteBorder {
+    display: block;
+	background-color: #fff;
+	border: 1px solid #666;
+	width: 100%;
+	height: 100%;
+}
+div#appNote div#appNoteTitle {
+	position: relative;
+	top: 0px;
+	left: 0px;
+	padding-top: 6px;
+	width: 95%;
+	margin: auto;
+	height: 30px;
+	text-align: center;
+	border-bottom: 1px solid #AAA;
+}
+div#appNote div#appNoteFooter {
+	position: relative;
+	bottom: 0px;
+	left: 0px;
+	padding-top: 6px;
+	width: 95%;
+	margin: auto;
+	height: 30px;
+	text-align: center;
+}
+div#appNote div#appNoteContent {
+	position: relative;
+	top: 10px;
+	padding: 6px;
+	padding-top: 0;
+    margin: 0 auto;
+	width: 100%;
+	height: 100%;
+	text-align: left;
+    overflow: auto;
+}
+div#appNote span#appClose {
+	display: none;
+	position: absolute;
+	padding: 0;
+	margin: 0;
+	top: 23px;
+	right: 18px;
+	width: 60px;
+	height: 40px;
+	text-align: center;
+}
+div#appNote button#appOkay {
+	cursor: pointer;
+	display: none;
+	position: absolute;
+	padding: 4px;
+	margin: 0;
+/* 	bottom: 20px; */
+	right: 10px;
+	width: 70px;
+	height: 30px;
+	text-align: center;
+	border: 1px solid #444;
+	background: #888;
+}
+span#appClose img {
+	width: 30px;
+	height: 30px;
+}
+div#appNoteBack {
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: #919191 url('../img/stripe3.png') repeat;
+	opacity: 0.8;
+	z-index: 1000;
+}
+div#appNote .appMenu {
+    position: relative;
+    list-style: none;
+    width: 90%;
+    text-align: center;
+    padding: 0;
+    margin: 0 auto;
+    border: 1px solid #aaa;
+}
+div#appNote .appMenu li {
+    line-height: 35px;
+    width: 100%;
+    border-bottom: 1px solid #aaa;
+}
+div#appNote .appMenu li:active {
+    background: #ddd;   
+}
+div#appNote .appMenu li:last-child {
+    border-bottom: none;   
+}
+div#appNote .appMenu li span {
+    width: 10px;
+    height: 35px;
+    background: #3796FF;
+  	background: -moz-linear-gradient(top, #3796FF, #7DBBFF);
+	background: -ms-linear-gradient(top, #3796FF, #7DBBFF);
+	background: -o-linear-gradient(top, #3796FF, #7DBBFF);
+	background: -webkit-linear-gradient(top, #3796FF, #7DBBFF);
+ 	background: linear-gradient(top, #3796FF, #7DBBFF);
+  
+}
+div#appNote .appMenu li:active span {
+    background: #7DBBFF;
+  	background: -moz-linear-gradient(top, #7DBBFF, #3796FF);
+ 	background: -ms-linear-gradient(top, #7DBBFF, #3796FF);
+ 	background: -o-linear-gradient(top, #7DBBFF, #3796FF);
+ 	background: -webkit-linear-gradient(top, #7DBBFF, #3796FF);
+ 	background: linear-gradient(top, #7DBBFF, #3796FF);
+    
+}
+
+/* Effects */
+.shadow {
+    -moz-box-shadow: 0px 0px 8px #555;
+    -webkit-box-shadow: 0px 0px 8px #555;
+    box-shadow: 0px 0px 8px #555;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=8, Direction=0, Color='#555555')";
+    filter: progid:DXImageTransform.Microsoft.Shadow(Strength=8, Direction=0, Color='#555555');
+}

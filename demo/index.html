@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <div id="appNote" role="notification"><div id="appNoteBorder">
@@ -9,7 +10,7 @@
   	<div id="appNoteContent">This is the content of the dialog box</div>
   	
   	<span id="appClose"><img src="img/close.png" /></span>
-  	<button id="appOkay">Okay</button>
+  	<div id="appNoteFooter"><button id="appOkay">Okay</button></div>
   </div></div>
   <div id="appNoteBack"></div>
   
@@ -27,8 +28,13 @@
 		},
 		"dimensions" : {
 			"dialogWidth" : "300px",
-			"dialogHeight" : "100px"
+			"dialogHeight" : "150px"
 		},
+		"okay" : {
+			"show" : true,
+			"text" : "Okay"
+		},
+		"callback" : function(){ alert("Okay clicked");},
         "onclose" : function(){ /* $('input#login_uName').focus(); */ alert("Notification closed"); }
 	};
 	notification(noteObj); 
