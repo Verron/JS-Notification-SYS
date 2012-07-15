@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+  <div id="appNote" role="notification"><div id="appNoteBorder">
+      
+  	<div id="appNoteTitle">Title of Dialog</div>
+  	<div id="appNoteContent">This is the content of the dialog box</div>
+  	
+  	<span id="appClose"><img src="img/close.png" /></span>
+  	<button id="appOkay">Okay</button>
+  </div></div>
+  <div id="appNoteBack"></div>
+  
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script src="../notification.js"></script>
+  <script>
+    noteObj = {
+		"title" : "Error",
+		"content" : "Username or Password is Incorrect",
+		"contentAlign" : "center",
+		"colors" : {
+			"noteForeground" : "#fff",
+			"noteBorder" : "rgba(193,0,0,0.5)",
+			"noteBorderLine": "#666"
+		},
+		"dimensions" : {
+			"dialogWidth" : "300px",
+			"dialogHeight" : "100px"
+		},
+        "onclose" : function(){ /* $('input#login_uName').focus(); */ alert("Notification closed"); }
+	};
+	notification(noteObj); 
+  
+  </script>
+</body>
+</html>
