@@ -2,17 +2,19 @@
  *  Notification v0.0.1
  *	Author:			Verron Knowles
  *	Created:		07-14-2012
- *	Last-Modified:	07-14-2012
- *	Changes:		07-14-2012
  *					
  */
  (function(){
 	var undefined,
-	note = $('div#appNote'), // Dependent on jQuery
+	note = $('div#appNote'),
 	noteBack = $('div#appNoteBack'), 
-	noteBorder = $('div#appNoteBorder');
+	noteBorder = $('div#appNoteBorder'),
+	noteClose, 
+	noteOkay, 
+	noteExit, 
+	noteActions;
 	
-	var notification = (function( options ){
+	var notification = this.notification = (function( options ){
 		var defaults = {
 			"title" : "Notification Title",
 			"titleAlgin" : "center",
@@ -38,9 +40,7 @@
 			"onclose" : ""
 		};
 		$.extend(defaults, options);
-		
-		notification.
-		
+				
 		noteClose = note.find('span#appClose'), noteOkay = note.find('button#appOkay');
 
 		noteExit = function() {
@@ -82,17 +82,20 @@
 				opts = tmp[y].split("=");
 				typeOptions[opts[0]] = opts[1];
 			}
-			alert(JSON.stringify(typeOptions));
+			
 			if ( typeOptions.option = "ajax" ) {
-				if ( typeOptions.data != null ) {
-					tmp = typeOptions.data.split("<");
-					typeOptions.data = {};
-					for ( var x=0; tmp[x]; x++ ) {
-						opts = tmp[x].split(">");
-						typeOptions.data[opts[0]] = opts[1];
-					}
-					alert(JSON.stringify(typeOptions.data));
-				}
+				var aDir = [];
+				aDir["php"] = "pjax/", aDir["htm"] = "ajax/";
+				
+				// Add directory
+				typeOptions.url = aDir[typeOptions.url.split(".")[1]] + typeOptions.url;
+				typeOptions.success = window[ typeOptions["success"] ];
+				
+				delete typeOptions.option;
+				if ( typeOptions.data != null )
+					typeOptions.data = notification.dataUnprep(typeOptions.data);
+				
+				$.ajax(typeOptions);
 			}
 		});
         /* $(document).delegate('html','mouseup',function(e){
@@ -150,6 +153,26 @@
 		return note;
 	});
 	
-	window.notification = notificaton;
+	notification.dataPrep = this.notification.dataPrep = function( obj ) {
+		if ( obj == undefined ) return;
+		var prepStr = "", optionDiv = String.fromCharCode(220), setDiv = String.fromCharCode(221);
+		for ( set in obj ) 
+			prepStr += set + optionDiv + obj[set] + setDiv;
+		prepStr = prepStr.slice(0,-1);
+		return prepStr;
+	};
+	
+	notification.dataUnprep = this.notification.dataUnprep = function( str ) {
+		if ( str == undefined ) return;
+		var prepObj = {}, optionDiv = String.fromCharCode(220), setDiv = String.fromCharCode(221);
+		var sets = str.split(setDiv), options;
+		for ( set in sets ) { 
+			options = sets[set].split(optionDiv);
+			prepObj[options[0]] = options[1];
+		}
+		return prepObj;
+	}
+	
+	window.notification = notification;
 	
  })( window );
